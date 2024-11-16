@@ -4,16 +4,30 @@ body {
   background-color: #b7d9ec;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
 }
 
-.card-container {
+.main-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  gap: 100px;
+  width: 100%;
+  padding: 5px;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+.form-section {
+  width: 45%;
+}
+
+.table-section {
   width: 100%;
   padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .card {
@@ -22,30 +36,33 @@ body {
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 500px;
+  max-width: 1000px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
-h1 {
+h1, h2 {
   color: #2c3e50;
-  font-size: 18px;
-  margin-bottom: 12px;
+  font-size: 20px;
+  margin-bottom: 3px;
   font-weight: 600;
   text-align: center;
+}
+
+.table-section h2 {
+  text-align: left;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 5px;
 }
 
 .form-group label {
-  font-size: 12px;
+  font-size: 14px;
   color: #2c3e50;
-  font-weight: 500;
   font-weight: bold;
 }
 
@@ -55,7 +72,7 @@ h1 {
   padding: 8px;
   border: 1px solid #e0e4eb;
   border-radius: 8px;
-  font-size: 12px;
+  font-size: 14px;
   background-color: #f9fafb;
   transition: all 0.3s ease;
   width: 100%;
@@ -81,8 +98,8 @@ textarea {
   font-weight: bold;
   border: none;
   border-radius: 10px;
-  padding: 10px;
-  font-size: 14px;
+  padding: 12px;
+  font-size: 16x;
   cursor: pointer;
   text-transform: uppercase;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -98,18 +115,64 @@ textarea {
   transform: translateY(0);
 }
 
+.quote-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.quote-table th, .quote-table td {
+  padding: 12px;
+  border: 1px solid #e0e4eb;
+  text-align: left;
+}
+
+.quote-table th {
+  background-color: #f1f1f1;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.quote-table tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.quote-table tbody tr.no-data {
+  background-color: #f9fafb;
+  text-align: center;
+}
+
+.quote-table td {
+  color: #1a1919; 
+}
+
 @media (max-width: 768px) {
-  .card {
-    padding: 15px;
-    max-width: 90%;
+  .main-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
 
-  h1 {
-    font-size: 16px;
+  .form-section, .table-section {
+    width: 90%;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  h1, h2 {
+    font-size: 18px;
   }
 
   .submit-btn {
-    padding: 8px;
+    padding: 10px;
+  }
+
+  .quote-table th, .quote-table td {
     font-size: 12px;
+    max-width: 150px;
   }
 }
