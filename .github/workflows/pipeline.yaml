@@ -1,0 +1,83 @@
+name: pipeline
+
+on:
+  push:
+    branches:
+      - main  
+  pull_request:
+    branches:
+      - main  
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v4  
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install  
+        working-directory: seminario
+
+      - name: Run build
+        run: npm run build 
+        working-directory: seminario
+  
+  test:
+    name: Running unit-tests
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: seminario
+
+      - name: Run unit tests
+        run: npm run test
+        working-directory: seminario
+
+      - name: Generate test coverage report
+        run: npm run test -- --coverage --watchAll=false
+        working-directory: seminario
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: seminario/coverage
+  
+  deploy:
+    name: Deploy to GitHub Pages 
+    runs-on: ubuntu-latest
+    needs: test
+    if: success()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build the app
+        run: npm run build
+        working-directory: seminario
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+
+  
