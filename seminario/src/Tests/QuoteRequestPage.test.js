@@ -66,13 +66,11 @@ describe("Testes da tela 'QuoteRequest'", () => {
 
     fireEvent.click(screen.getByText(/Solicitar Orçamento/i));
 
-    await waitFor(() => {
-      expect(screen.getByText("João Silva")).toBeInTheDocument();
-      expect(screen.getByText("Manutenção")).toBeInTheDocument();
-      expect(screen.getByText("joao@email.com")).toBeInTheDocument();
-      expect(screen.getByText("99999-9999")).toBeInTheDocument();
-      expect(screen.getByText("alta")).toBeInTheDocument();
-    });
+    await screen.findByText("João Silva");
+    await screen.findByText("Manutenção");
+    await screen.findByText("joao@email.com");
+    await screen.findByText("99999-9999");
+    await screen.findByText("alta");
   });
 
   test("resetar o formulário depois da submissão", async () => {
@@ -112,13 +110,11 @@ describe("Testes da tela 'QuoteRequest'", () => {
 
     fireEvent.click(screen.getByText(/Solicitar Orçamento/i));
 
-    await waitFor(() => {
-      expect(nameInput.value).toBe("");
-      expect(emailInput.value).toBe("");
-      expect(telephoneInput.value).toBe("");
-      expect(serviceInput.value).toBe("");
-      expect(detailsInput.value).toBe("");
-      expect(urgencyInput.value).toBe("baixa");
-    });
+    await waitFor(() => expect(nameInput.value).toBe(""));
+    await waitFor(() => expect(emailInput.value).toBe(""));
+    await waitFor(() => expect(telephoneInput.value).toBe(""));
+    await waitFor(() => expect(serviceInput.value).toBe(""));
+    await waitFor(() => expect(detailsInput.value).toBe(""));
+    await waitFor(() => expect(urgencyInput.value).toBe("baixa"));
   });
 });
