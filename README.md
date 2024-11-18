@@ -1,10 +1,8 @@
-# Testes Unitários e Integração Contínua (CI/CD) em React
-
-Este repositório foi desenvolvido para o seminário da disciplina C214 e explora a implementação de testes unitários em aplicações React utilizando a React Testing Library e Jest. Além disso, demonstramos como integrar testes em um pipeline de Integração Contínua (CI/CD) usando GitHub Actions. O foco do projeto, é simular um sistema para solicitação de orçamentos de serviços.
+# ORC API (Orçamento de serviços) em React
 
 ## Descrição do Projeto
 
-Este projeto foi projetado para criar um layout que permite aos usuários solicitar orçamentos de serviços através de um formulário. O formulário contém os seguintes campos:
+Foi projetado um layout que permite aos usuários solicitar orçamentos de serviços através de um formulário. O formulário contém os seguintes campos:
 * Nome
 * Email
 * Telefone
@@ -16,22 +14,35 @@ Após o envio do formulário, os dados preenchidos são exibidos em uma tabela d
 
 ##  Pré-requisitos
 
-* Node.js (necessário para o npm)
- ```sh
-     https://nodejs.org/pt
- ```
-* **Visual Studio Code (VS Code)**, com a extensão Jest para facilitar a execução de testes.
+* JavaScript
+* Jest
+* Node.js
+* npm (Node Package Manager)
+* React
+* React Testing Librar
+
 
 ## Configuração do Ambiente
 
-### 1. Instalar Dependências
+### 1. Clonar o repositório
+ ```sh
+     https://github.com/ThomasCeccon/C214-Semin-rio-.git
+     cd C214-Semin-rio
+ ```
+### 2. Instalar Dependências
 Para instalar o gerenciador de pacotes do Node e NPM em React:
  ```sh
      npm install 
  ```
 
-### 2. Inicializar o Projeto React
+### 3. Inicializar o Projeto React
 Utilize o comando abaixo para abrir o projeto:
  ```sh
     npm start 
  ```
+
+## Mostrar os testes
+ ```sh
+    npm test 
+ ```
+
