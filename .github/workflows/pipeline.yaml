@@ -28,6 +28,12 @@ jobs:
       - name: Run build
         run: npm run build 
         working-directory: seminario
+
+      - name: Upload build artifact 
+        uses: actions/upload-artifact@v4
+        with:
+          name: pacote-build
+          path: seminario
   
   test:
     name: Running unit-tests
