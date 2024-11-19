@@ -1,49 +1,63 @@
-# ORC API (Orçamento de serviços) em React
+# ORC API (Orçamento de serviços) 
 
 ## Descrição do Projeto
 
-Foi projetado um layout que permite aos usuários solicitar orçamentos de serviços através de um formulário. O formulário contém os seguintes campos:
+O *ORC API* é uma aplicação desenvolvida em *React* para gerenciamento de solicitações de orçamento de serviços. Foi projetado um layout que permite aos usuários solicitar orçamentos de serviços através de um formulário. O formulário contém os seguintes campos:
 * Nome
 * Email
 * Telefone
 * Serviço (tipo de serviço solicitado)
 * Detalhes (descrição do serviço)
-* Urgente (select com opções de baixa, média ou alta urgência)
+* Urgência (opções de baixa, média ou alta)
   
 Após o envio do formulário, os dados preenchidos são exibidos em uma tabela de solicitações de orçamento. A tabela apresenta todas as informações inseridas pelo usuário, permitindo um acompanhamento prático das solicitações.
 
-##  Pré-requisitos
+## Pré-requisitos
 
-* JavaScript
-* Jest
-* Node.js
-* npm (Node Package Manager)
-* React
-* React Testing Librar
+* [Node.js](https://nodejs.org/en)
+* [npm (Node Package Manager)](https://www.npmjs.com/)
 
+## Criar um projeto em React
+
+### 1. Criar projeto React
+Crie a estrutura inicial do projeto React:
+ sh
+     npx create-react-app orc api
+ 
 
 ## Configuração do Ambiente
 
 ### 1. Clonar o repositório
- ```sh
+Clone o repositório em sua máquina local e navegue até o diretório do projeto:
+ sh
      https://github.com/ThomasCeccon/C214-Semin-rio-.git
      cd C214-Semin-rio
- ```
+ 
 
 ### 2. Instalar Dependências
-Para instalar o gerenciador de pacotes do Node e NPM em React:
- ```sh
+Instale as dependências necessárias com o comando:
+ sh
      npm install 
- ```
+ 
 
 ### 3. Inicializar o Projeto React
-Utilize o comando abaixo para abrir o projeto:
- ```sh
+Inicie o servidor de desenvolvimento para visualizar o projeto:
+ sh
     npm start 
- ```
+ 
 
-## Mostrar os testes
- ```sh
+## Relatório de testes
+
+## 1. Mostrar os testes
+Execute os testes automatizados para verificar o comportamento do projeto:
+ sh
     npm test 
- ```
+ 
 
+## Observações
+- O projeto utiliza *GitHub Actions* para automatizar o pipeline de integração contínua, gerando artefatos como:
+  - Build do projeto.
+  - Relatório de teste.
+ 
+## Veja Mais
+Para saber mais sobre o React e seus recursos, consulte a [documentação oficial React](https://create-react-app.dev/docs/getting-started)
