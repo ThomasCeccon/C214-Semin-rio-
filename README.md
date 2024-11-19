@@ -30,18 +30,13 @@ Após o envio do formulário, os dados preenchidos são exibidos em uma tabela d
      cd C214-Semin-rio
  ```
 
-### 2. Criar projeto React
- ```sh
-     npx create-react-app orc api
- ```
-
-### 3. Instalar Dependências
+### 2. Instalar Dependências
 Para instalar o gerenciador de pacotes do Node e NPM em React:
  ```sh
      npm install 
  ```
 
-### 4. Inicializar o Projeto React
+### 3. Inicializar o Projeto React
 Utilize o comando abaixo para abrir o projeto:
  ```sh
     npm start 
