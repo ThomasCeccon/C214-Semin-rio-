@@ -1,4 +1,4 @@
-[![CIDC - APPMantra](https://github.com/ThomasCeccon/C214-Semin-rio-/actions/workflows/cidc.yml/badge.svg)](https://github.com/ThomasCeccon/C214-Semin-rio-/actions/workflows/cidc.yml)
+[![CIDC - ORCAPI](https://github.com/ThomasCeccon/C214-Semin-rio-/actions/workflows/cidc.yml/badge.svg)](https://github.com/ThomasCeccon/C214-Semin-rio-/actions/workflows/cidc.yml)
 
 # *ORC API (Orçamento de serviços)*
 
