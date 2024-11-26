@@ -3,10 +3,18 @@ name: pipeline
 on:
   push:
     branches:
-      - main  
+      - main 
+      - Iza 
+      - Thomas
+      - Luiz
+      - Breno
   pull_request:
     branches:
       - main  
+      - Iza
+      - Thomas
+      - Luiz
+      - Breno
 jobs:
   build:
     name: build
