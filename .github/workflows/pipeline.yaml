@@ -3,52 +3,25 @@ name: pipeline
 on:
   push:
     branches:
-      - main 
-      - Iza 
+      - main
+      - Iza
       - Thomas
       - Luiz
       - Breno
   pull_request:
     branches:
-      - main  
+      - main
       - Iza
       - Thomas
       - Luiz
       - Breno
+
 jobs:
   build:
-    name: build
+    name: Build Frontend and Backend
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code 
-        uses: actions/checkout@v4  
-
-      - name: Set up Node.js 20
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install  
-        working-directory: seminario
-
-      - name: Run build
-        run: npm run build 
-        working-directory: seminario
-
-      - name: Upload build artifact 
-        uses: actions/upload-artifact@v4
-        with:
-          name: pacote-build
-          path: seminario
-  
-  test:
-    name: Running unit-tests
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code 
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Node.js 20
@@ -56,25 +29,94 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: Install dependencies for frontend
         run: npm install
         working-directory: seminario/frontend
 
-      - name: Run unit tests
+      - name: Install dependencies for backend
+        run: npm install
+        working-directory: seminario/backend
+
+      - name: Run build for frontend
+        run: npm run build
+        working-directory: seminario/frontend
+
+      - name: Run build for backend
+        run: npm run build
+        working-directory: seminario/backend
+
+      - name: Upload frontend build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-build
+          path: seminario/frontend/build
+
+      - name: Upload backend build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-build
+          path: seminario/backend/build
+
+  test:
+    name: Running Unit Tests for Frontend
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies for frontend
+        run: npm install
+        working-directory: seminario/frontend
+
+      - name: Run unit tests for frontend
         run: npm run test
         working-directory: seminario/frontend
 
-      - name: Generate test coverage report
+      - name: Generate test coverage report for frontend
         run: npm run test -- --coverage --watchAll=false
         working-directory: seminario/frontend
 
-      - name: Upload test results
+      - name: Upload frontend test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-results
+          name: frontend-test-results
           path: seminario/frontend/coverage
-  
-  
 
-  
+  backend-test:
+    name: Running Unit Tests for Backend
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies for backend
+        run: npm install
+        working-directory: seminario/backend
+
+      - name: Run unit tests for backend
+        run: npm run test
+        working-directory: seminario/backend
+
+      - name: Generate test coverage report for backend
+        run: npm run test -- --coverage --watchAll=false
+        working-directory: seminario/backend
+
+      - name: Upload backend test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-test-results
+          path: seminario/backend/coverage
