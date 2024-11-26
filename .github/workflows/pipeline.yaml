@@ -50,22 +50,22 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: seminario
+        working-directory: seminario/frontend
 
       - name: Run unit tests
         run: npm run test
-        working-directory: seminario
+        working-directory: seminario/frontend
 
       - name: Generate test coverage report
         run: npm run test -- --coverage --watchAll=false
-        working-directory: seminario
+        working-directory: seminario/frontend
 
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: seminario/coverage
+          path: seminario/frontend/coverage
   
   
 
