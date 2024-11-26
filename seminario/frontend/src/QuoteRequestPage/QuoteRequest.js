@@ -23,7 +23,7 @@ function QuoteRequest() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/api/quote-requests", {
+    fetch("http://localhost:5000/api/quote-requests", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +51,7 @@ function QuoteRequest() {
   };
 
   const fetchQuoteRequests = () => {
-    fetch("http://localhost:3000/api/quote-requests")
+    fetch("http://localhost:5000/api/quote-requests")
       .then((response) => response.json())
       .then((data) => {
         setQuoteRequests(data);
