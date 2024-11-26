@@ -18,7 +18,7 @@ on:
 
 jobs:
   build:
-    name: Build Frontend and Backend
+    name: Build 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -29,21 +29,13 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies for frontend
-        run: npm install
-        working-directory: seminario/frontend
+      - name: Install dependencies 
+        run: "npm install --prefix frontend && npm install --prefix backend"
+        working-directory: seminario
 
-      - name: Install dependencies for backend
-        run: npm install
-        working-directory: seminario/backend
-
-      - name: Run build for frontend
+      - name: Run build 
         run: npm run build
         working-directory: seminario/frontend
-
-      - name: Run build for backend
-        run: npm run build
-        working-directory: seminario/backend
 
       - name: Upload frontend build artifact
         uses: actions/upload-artifact@v4
