@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000; 
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -50,6 +50,10 @@ app.post('/api/quote-requests', (req, res) => {
   res.status(201).json({ message: 'Solicitação de orçamento criada com sucesso!' });
 });
 
-app.listen(port, () => {
-  console.log(`Servidor backend rodando na porta: ${port}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => {
+    console.log(`Servidor backend rodando na porta: ${port}`);
+  });
+}
+
+module.exports = app;
