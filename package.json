@@ -1,0 +1,16 @@
+{
+  "name": "seminario",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start --prefix seminario/backend\" \"npm run start --prefix seminario/frontend\"",
+    "install": "concurrently \"npm install --prefix frontend\" \"npm install --prefix backend\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

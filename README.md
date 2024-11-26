@@ -29,20 +29,20 @@ Crie a estrutura inicial do projeto React:
 
 ### 1. Clonar o repositório
 Clone o repositório em sua máquina local e navegue até o diretório do projeto:
-```
+```bash
      https://github.com/ThomasCeccon/C214-Semin-rio-.git
      cd C214-Semin-rio
 ```
 
 ### 2. Instalar Dependências
 Instale as dependências necessárias com o comando:
- ```
+ ```bash
      npm install 
  ```
 
 ### 3. Inicializar o Projeto React
-Inicie o servidor de desenvolvimento para visualizar o projeto:
- ```
+Inicie o servidor de desenvolvimento para executar o projeto:
+ ```bash
     npm start 
  ```
 
@@ -50,7 +50,7 @@ Inicie o servidor de desenvolvimento para visualizar o projeto:
 
 ## 1. Mostrar os testes
 Execute os testes automatizados para verificar o comportamento do projeto:
- ```
+ ```bash
     npm test 
  ```
 

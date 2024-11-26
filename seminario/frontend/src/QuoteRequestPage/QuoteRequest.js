@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import './styles.css';
+import React, { useState, useEffect } from "react";
+import "./styles.css";
 
 function QuoteRequest() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    details: '',
-    urgency: 'baixa',
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    details: "",
+    urgency: "baixa",
   });
 
   const [quoteRequests, setQuoteRequests] = useState([]);
@@ -23,16 +23,47 @@ function QuoteRequest() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setQuoteRequests((prevRequests) => [...prevRequests, formData]);
+    fetch("http://localhost:5000/api/quote-requests", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Solicitação enviada com sucesso:", data);
+        
+        fetchQuoteRequests();
+      })
+      .catch((error) => {
+        console.error("Erro ao enviar solicitação:", error);
+      });
+
     setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      details: '',
-      urgency: 'baixa',
+      name: "",
+      email: "",
+      phone: "",
+      service: "",
+      details: "",
+      urgency: "baixa",
     });
   };
+
+  const fetchQuoteRequests = () => {
+    fetch("http://localhost:5000/api/quote-requests")
+      .then((response) => response.json())
+      .then((data) => {
+        setQuoteRequests(data);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar as solicitações:", error);
+      });
+  };
+
+  useEffect(() => {
+    fetchQuoteRequests();
+  }, []);
 
   return (
     <div className="main-container">
@@ -111,7 +142,9 @@ function QuoteRequest() {
               <option value="alta">Alta</option>
             </select>
           </div>
-          <button type="submit" className="submit-btn">Solicitar Orçamento</button>
+          <button type="submit" className="submit-btn">
+            Solicitar Orçamento
+          </button>
         </form>
       </div>
 
@@ -130,7 +163,9 @@ function QuoteRequest() {
           <tbody>
             {quoteRequests.length === 0 ? (
               <tr className="no-data">
-                <td colSpan="5">Nenhuma solicitação de orçamento cadastrada.</td>
+                <td colSpan="5">
+                  Nenhuma solicitação de orçamento cadastrada.
+                </td>
               </tr>
             ) : (
               quoteRequests.map((request, index) => (
