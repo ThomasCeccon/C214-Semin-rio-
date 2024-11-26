@@ -10,7 +10,7 @@ const port = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-const dataFilePath = path.join(__dirname, 'data', 'mockBD.json');
+const dataFilePath = path.join(__dirname, '../data', 'mockBD.json');
 
 const loadData = () => {
   try {
