@@ -26,11 +26,17 @@ describe("mock de API e renderização", () => {
     render(<QuoteRequest />);
 
     // Espera que o componente renderize os dados após a chamada da API
+    // Verifica se os dados mockados estão na tela
     await waitFor(() => {
-      // Verifica se os dados mockados estão na tela
       expect(screen.getByText(/João/i)).toBeInTheDocument();
+    });
+    await waitFor(() => {
       expect(screen.getByText(/Web Design/i)).toBeInTheDocument();
+    });
+    await waitFor(() => {
       expect(screen.getByText(/joao@example.com/i)).toBeInTheDocument();
+    });
+    await waitFor(() => {
       expect(screen.getByText(/123456789/i)).toBeInTheDocument();
     });
   });

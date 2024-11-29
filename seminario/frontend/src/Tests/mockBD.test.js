@@ -17,10 +17,11 @@ describe("mock de API e renderização", () => {
     // Renderiza o componente
     render(<QuoteRequest />);
 
-    // Espera que o componente renderize os dados após a chamada da API
     // Verifica se um dos registros foi renderizado com sucesso, conforme o mock
     await waitFor(() => {
       expect(screen.getByText(/Joana/i)).toBeInTheDocument();
+    });
+    await waitFor(() => {
       expect(screen.getByText(/Desenvolvedora/i)).toBeInTheDocument();
     });
   });
